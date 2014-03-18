@@ -1,7 +1,7 @@
 PushOnAuth
 ============
 
-A service that will send you a "PushOver" notification when any kind of auth happens on a Linux system.
+A service that will send you a "Push" notification when any kind of auth happens on a Linux system.
 
 ![Say it with pixels](http://i.imgur.com/5VSbFC9.png)
 
@@ -44,3 +44,6 @@ nohup ./PushOnAuth &
 }
 
 ```
+
+##Note
+Please notify me if any push services that you would like to see implemented are not implemented yet

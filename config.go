@@ -106,7 +106,7 @@ func GetCFG() GConfig {
 	}
 
 	var nfc = tfg.Notifications
-	if !CanPushOver(nfc) && !CanPushAlot(nfc) {
+	if !CanPushOver(nfc) && !CanPushAlot(nfc) && !CanAzise(nfc) {
 		log.Fatalf("Please fill in at least one push service in %s", cfgfile)
 	}
 

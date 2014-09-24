@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-var cfgfile string = "./pushovercfg.json"
+var cfgfile string = "./pushonauthcfg.json"
 
 type GConfig struct {
 	Notifications Notifiers

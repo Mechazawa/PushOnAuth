@@ -12,10 +12,13 @@ func Push(ntf Notifiers, Title string, Message string) {
 	if CanPushAlot(ntf) {
 		SendPushAlot(Title, Message, ntf.PushAlot.Token)
 	}
+	if CanAzise(ntf) {
+		SendAzise(Title, Message, ntf.Azise.Secret)
+	}
 }
 
 func IsTokenSet(token string) bool {
-	return token != "" && token != "token"
+	return token != "" && token != "token" && token != "secret"
 }
 
 
@@ -32,6 +35,17 @@ func SendPushOver(Title string, Message string, Token string, User string) {
 		})
 }
 
+func CanAzise(ntf Notifiers) bool {
+	return IsTokenSet(ntf.Azise.Secret)
+}
+func SendAzise(Title string, Message string, Secret string) {
+        http.PostForm("https://api.azise.net/message",
+                url.Values{
+                        "secret":  {Secret},
+                        "message": {Message},
+                        "Title":   {Title},
+                })
+}
 
 func CanPushAlot(ntf Notifiers) bool {
 	return IsTokenSet(ntf.PushAlot.Token)

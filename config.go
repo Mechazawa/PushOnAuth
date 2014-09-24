@@ -22,6 +22,7 @@ type WatchFile struct {
 type Notifiers struct {
 	PushOver NPushOver
 	PushAlot NPushAlot
+	Azise NAzise
 }
 
 /* Notifiers */
@@ -32,6 +33,10 @@ type NPushOver struct {
 
 type NPushAlot struct {
 	Token string
+}
+
+type NAzise struct {
+	Secret string
 }
 
 func GetDefaultConfig() GConfig {
@@ -49,6 +54,7 @@ func GetDefaultConfig() GConfig {
 	var nfr Notifiers
 	var pusho NPushOver
 	var pusha NPushAlot
+	var azise NAzise
 
 	pusho.UserToken = "token"
 	pusho.AppToken = "token"
@@ -56,6 +62,9 @@ func GetDefaultConfig() GConfig {
 
 	pusha.Token = "token"
 	nfr.PushAlot = pusha
+
+	azise.Secret = "secret"
+	nfr.Azise = azise
 
 	tfg.Notifications = nfr
 	return tfg

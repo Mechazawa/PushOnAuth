@@ -1,0 +1,19 @@
+# Place this in /etc/systemd/system/
+# Put pushonauth bin in /usr/bin, the config will generate in /etc/pushonauth.json
+
+[Unit]
+Description=Push on auth monitor
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+
+WorkingDirectory=/etc/
+ExecStart=/usr/bin/pushonauth
+
+[Install]
+WantedBy=multi-user.target
+
+

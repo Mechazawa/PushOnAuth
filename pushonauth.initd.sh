@@ -3,18 +3,38 @@
 
 
 PIDFILE=/var/run/pushonauth.pid
+NAME=pushonauth
 
 case $1 in
   start)
-    echo "Starting pushonauth"
+    echo "Starting $NAME"
     start-stop-daemon --start --exec /usr/bin/pushonauth -m --pidfile $PIDFILE --background -d /etc/
     ;;
   stop)
-    echo "Stopping pushonauth"
+    echo "Stopping $NAME"
     start-stop-daemon --stop --pidfile $PIDFILE
     ;;
+  restart)
+    echo "Restarting $NAME"
+    $0 stop
+    sleep 1
+    $0 start
+    ;;
+  status)
+    start-stop-daemon --status --pidfile $PIDFILE
+    status=$?
+    if [ $status -eq 0 ]; then
+       echo "$NAME is running"
+    elif [ $status -eq 1 ]; then
+       echo "$NAME is not running but the PID file exists"
+    elif [ $status -eq 3 ]; then
+       echo "$NAME is not running"
+    elif [ $status -eq 4 ]; then
+       echo "Can't determine if $NAME is running"
+    fi
+    ;;
   *)
-    echo "Usage: /etc/init.d/pushonauth {start|stop}"
+    echo "Usage: $0 {start|stop|restart|status}"
     exit 1
     ;;
 esac

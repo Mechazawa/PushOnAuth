@@ -4,11 +4,12 @@
 
 PIDFILE=/var/run/pushonauth.pid
 NAME=pushonauth
+BINFILE=/usr/bin/pushonauth
 
 case $1 in
   start)
     echo "Starting $NAME"
-    start-stop-daemon --start --exec /usr/bin/pushonauth -m --pidfile $PIDFILE --background -d /etc/
+    start-stop-daemon --start --exec $BINFILE -m --pidfile $PIDFILE --background -d /etc/
     ;;
   stop)
     echo "Stopping $NAME"

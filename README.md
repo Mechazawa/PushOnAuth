@@ -19,6 +19,8 @@ After that you can run it "forever" by doing
 nohup ./PushOnAuth &
 ```
 
+There are also two scripts included for initd and systemd that allow you to easilly daemonize the process.
+
 ##Sample setup
 
 ```json

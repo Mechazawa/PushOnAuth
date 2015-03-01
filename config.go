@@ -22,7 +22,7 @@ type WatchFile struct {
 type Notifiers struct {
 	PushOver NPushOver
 	PushAlot NPushAlot
-	Azise NAzise
+	Pushjet NPushjet
 }
 
 /* Notifiers */
@@ -35,7 +35,7 @@ type NPushAlot struct {
 	Token string
 }
 
-type NAzise struct {
+type NPushjet struct {
 	Secret string
 }
 
@@ -54,7 +54,7 @@ func GetDefaultConfig() GConfig {
 	var nfr Notifiers
 	var pusho NPushOver
 	var pusha NPushAlot
-	var azise NAzise
+	var pushjet NPushjet
 
 	pusho.UserToken = "token"
 	pusho.AppToken = "token"
@@ -63,8 +63,8 @@ func GetDefaultConfig() GConfig {
 	pusha.Token = "token"
 	nfr.PushAlot = pusha
 
-	azise.Secret = "secret"
-	nfr.Azise = azise
+	pushjet.Secret = "secret"
+	nfr.Pushjet = pushjet
 
 	tfg.Notifications = nfr
 	return tfg
@@ -106,7 +106,7 @@ func GetCFG() GConfig {
 	}
 
 	var nfc = tfg.Notifications
-	if !CanPushOver(nfc) && !CanPushAlot(nfc) && !CanAzise(nfc) {
+	if !CanPushOver(nfc) && !CanPushAlot(nfc) && !CanPushjet(nfc) {
 		log.Fatalf("Please fill in at least one push service in %s", cfgfile)
 	}
 

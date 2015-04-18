@@ -32,6 +32,9 @@ There are also two scripts included for initd and systemd that allow you to easi
       },
       "PushAlot":{
          "Token":"token"
+      },
+      "Pushjet": {
+         "Secret":"secret"
       }
    },
    "Watches":[
